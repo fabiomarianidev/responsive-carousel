@@ -1,0 +1,93 @@
+:root {
+    --carousel-width: 900px;
+    --carousel-height: 200px;
+    --item-width: 300px;
+    --position: 0px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.carousel-container {
+    width: var(--carousel-width);
+    height: var(--carousel-height);
+    margin: 0 auto;
+    padding: 0;
+    background: black;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.carousel-filmstrip {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    transform: translateX(var(--position));
+    transition: transform 0.1s ease-out;
+ }
+
+.item {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: black;
+    width: var(--item-width);
+    height: 100%;
+    flex-shrink: 0;
+}
+
+
+.btn {
+    height: 100%;
+    width: 10%;
+    max-width: 50px;
+    background: rgba(256,256,256,0.5);
+    border: none;
+    z-index: 10;
+}
+
+
+.btn.previous {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.btn.next {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btn.hidden {
+    display: none;
+}
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+    width: 2em;
+    height: 2em;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    /* fill: #4691f6; */
+    fill: black;
+  }
+  
+  .svg-icon circle {
+    /* stroke: #4691f6; */
+    stroke: black;
+    stroke-width: 1;
+  }
