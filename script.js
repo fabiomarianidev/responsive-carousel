@@ -29,6 +29,18 @@ const setCarouselSize = () => {
 
 }
 
+const images = [
+    "https://picsum.photos/600/400?random=1",
+    "https://picsum.photos/600/400?random=2",
+    "https://picsum.photos/600/400?random=3",
+    "https://picsum.photos/600/400?random=4",
+    "https://picsum.photos/600/400?random=5",
+    "https://picsum.photos/600/400?random=6",
+    "https://picsum.photos/600/400?random=7",
+    "https://picsum.photos/600/400?random=8",
+    "https://picsum.photos/600/400?random=9",    
+]
+
 const [carouselWidth, numberOfImages] = setCarouselSize();
 
 document.documentElement.style.setProperty('--carousel-width', `${carouselWidth}px`);
@@ -118,17 +130,7 @@ const handleDragEnd = (evt) => {
 
 
 // load images into carousel. the carousel can work with element is added as a child of .carousel-filmstrip 
-const images = [
-    "https://picsum.photos/600/400?random=1",
-    "https://picsum.photos/600/400?random=2",
-    "https://picsum.photos/600/400?random=3",
-    "https://picsum.photos/600/400?random=4",
-    "https://picsum.photos/600/400?random=5",
-    "https://picsum.photos/600/400?random=6",
-    "https://picsum.photos/600/400?random=7",
-    "https://picsum.photos/600/400?random=8",
-    "https://picsum.photos/600/400?random=9",    
-]
+
 
 images.forEach ((item, index) => {
     const div = document.createElement('div');
