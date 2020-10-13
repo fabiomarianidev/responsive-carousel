@@ -1,4 +1,5 @@
 const setCarouselSize = () => {
+    // set the number of displayed elements based on the window size
     const windowWidth = document.documentElement.clientWidth;
     let carouselWidth = 1200;
     let numberOfImages = 3;
@@ -29,8 +30,6 @@ const setCarouselSize = () => {
 }
 
 const [carouselWidth, numberOfImages] = setCarouselSize();
-// const carouselWidth = 1200;
-// const numberOfImages = 3;
 
 document.documentElement.style.setProperty('--carousel-width', `${carouselWidth}px`);
 
@@ -40,21 +39,10 @@ document.documentElement.style.setProperty('--item-width', `${itemWidth}px`);
 const carouselHeight = itemWidth * 2/3;
 document.documentElement.style.setProperty('--carousel-height', `${carouselHeight}px`)
 
-const images = [
-    "https://picsum.photos/600/400?random=1",
-    "https://picsum.photos/600/400?random=2",
-    "https://picsum.photos/600/400?random=3",
-    "https://picsum.photos/600/400?random=4",
-    "https://picsum.photos/600/400?random=5",
-    "https://picsum.photos/600/400?random=6",
-    "https://picsum.photos/600/400?random=7",
-    "https://picsum.photos/600/400?random=8",
-    "https://picsum.photos/600/400?random=9",    
-]
-
 const rightLimit = (images.length - numberOfImages) * itemWidth; 
 
-const checkLimits = () => { //hides left-right buttons if the first or last image is reached
+const checkLimits = () => { 
+    //hides left-right buttons if the first or last image is reached
     if (position >= 0) {
         document.querySelector('.previous').classList.add('hidden');
     } else {
@@ -67,7 +55,7 @@ const checkLimits = () => { //hides left-right buttons if the first or last imag
     }
 }
 
-// previous/next buttons 
+// previous/next buttons handlers
 const handlePrev = () => {
     if(position < 0) {
         currentPosition = position + itemWidth;
@@ -113,7 +101,9 @@ const handleDrag = (evt) => {
 }
 
 const handleDragEnd = (evt) => {
-    // snaps in order to have the image border on the left edge
+    // snaps the left edge of an element to the left edge of the container
+    // if more than half of the element is visible, snaps to its left edge
+    // otherwise, snaps to the next element
     const modulo = -currentPosition % itemWidth;
     if (modulo < itemWidth /2 ) {
         currentPosition = currentPosition + modulo;
@@ -127,9 +117,19 @@ const handleDragEnd = (evt) => {
 }
 
 
+// load images into carousel. the carousel can work with element is added as a child of .carousel-filmstrip 
+const images = [
+    "https://picsum.photos/600/400?random=1",
+    "https://picsum.photos/600/400?random=2",
+    "https://picsum.photos/600/400?random=3",
+    "https://picsum.photos/600/400?random=4",
+    "https://picsum.photos/600/400?random=5",
+    "https://picsum.photos/600/400?random=6",
+    "https://picsum.photos/600/400?random=7",
+    "https://picsum.photos/600/400?random=8",
+    "https://picsum.photos/600/400?random=9",    
+]
 
-
-// load images into carousel
 images.forEach ((item, index) => {
     const div = document.createElement('div');
     div.classList.add('item')
